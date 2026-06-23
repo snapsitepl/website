@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const sumAutoPrice = document.getElementById("sumAutoPrice");
     const sumClientPrice = document.getElementById("sumClientPrice");
     
-    const hiddenScreenshot = document.getElementById("hiddenScreenshot");
+    // Ukryte pole na tekstową specyfikację zamiast obrazka
+    const projectDetailsInput = document.getElementById("projectDetails");
 
     // Pola płatności
     const payBlik = document.getElementById("payBlik");
@@ -121,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- OBSŁUGA ZDARZEŃ ZMIAN ---
-
     typeCards.forEach(card => {
         card.addEventListener("click", () => {
             typeCards.forEach(c => c.classList.remove("active"));
@@ -186,14 +186,16 @@ document.addEventListener("DOMContentLoaded", () => {
         sumClientPrice.textContent = e.target.value ? e.target.value + " PLN" : "Brak";
     });
 
-    // --- POBIERANIE PLIKU JSON ---
-    btnDownloadConfig.addEventListener("click", () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
-        const dlAnchorElem = document.createElement('a');
-        dlAnchorElem.setAttribute("href", dataStr);
-        dlAnchorElem.setAttribute("download", "moj_projekt_snapsite.json");
-        dlAnchorElem.click();
-    });
+    // --- POBIERANIE PLIKU JSON LOKALNIE ---
+    if (btnDownloadConfig) {
+        btnDownloadConfig.addEventListener("click", () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "moj_projekt_snapsite.json");
+            dlAnchorElem.click();
+        });
+    }
 
     // --- LOGIKA PŁATNOŚCI ---
     function updatePaymentFields() {
@@ -251,24 +253,28 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSlide = 0;
 
     function showSlide(index) {
-        slides.forEach(s => s.classList.remove("active"));
-        dots.forEach(d => d.classList.remove("active"));
-        slides[index].classList.add("active");
-        dots[index].classList.add("active");
-        currentSlide = index;
+        if(slides.length && dots.length) {
+            slides.forEach(s => s.classList.remove("active"));
+            dots.forEach(d => d.classList.remove("active"));
+            slides[index].classList.add("active");
+            dots[index].classList.add("active");
+            currentSlide = index;
+        }
     }
 
     dots.forEach(dot => {
         dot.addEventListener("click", (e) => { showSlide(parseInt(e.target.dataset.index)); });
     });
 
-    setInterval(() => {
-        let next = currentSlide + 1;
-        if (next >= slides.length) next = 0;
-        showSlide(next);
-    }, 6000);
+    if(slides.length > 0) {
+        setInterval(() => {
+            let next = currentSlide + 1;
+            if (next >= slides.length) next = 0;
+            showSlide(next);
+        }, 6000);
+    }
 
-    // --- WYSYŁKA FORMULARZA Z REALNYM API WEB3FORMS ---
+    // --- BEZPIECZNA WYSYŁKA FORMULARZA (TEKST) ---
     orderForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -276,56 +282,56 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSubmitSpinner.classList.remove("hidden");
         btnSubmitForm.disabled = true;
 
-        // 1. Najpierw robimy screenshot podglądu live
-        html2canvas(liveMonitor, {
-            backgroundColor: "#0f1026",
-            scale: 1,
-            logging: false
-        }).then(canvas => {
-            // Wrzucamy obrazek base64 do ukrytego inputa
-            hiddenScreenshot.value = canvas.toDataURL("image/png");
+        // Budujemy tekstową specyfikację zamówienia
+        const addonsText = state.addons.map(a => `${a.name} (${a.price} PLN)`).join(", ") || "Brak";
+        const specyfikacjaTekstowa = `
+KONFIGURACJA STRONY SNAPSTIE:
+------------------------------------------
+Typ projektu: ${state.typeName}
+Wybrany styl wizualny: ${state.styleName}
+Kolor główny (Primary): ${state.primaryColor}
+Kolor poboczny (Secondary): ${state.secondaryColor}
+Wybrany font: ${state.fontName}
+Zaokrąglenie krawędzi: ${state.borderRadius}px
+Wybrane dodatki: ${addonsText}
+------------------------------------------
+Cena systemowa: ${state.totalPrice}
+Propozycja budżetu klienta: ${inputCustomPrice.value ? inputCustomPrice.value + " PLN" : "Brak"}
+        `.trim();
 
-            // 2. Pobieramy wszystkie dane z formularza (w tym nasz wygenerowany przed chwilą screenshot)
-            const formData = new FormData(orderForm);
+        // Przypisujemy tekst do ukrytego pola
+        if (projectDetailsInput) {
+            projectDetailsInput.value = specyfikacjaTekstowa;
+        }
 
-            // 3. Wysyłamy realne zapytanie do Web3Forms
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                
-                if (response.status === 200) {
-                    // SUKCES: Czyścimy formularz i pokazujemy okienko
-                    successModal.classList.remove("hidden");
-                    orderForm.reset();
-                    sumClientPrice.textContent = "Brak";
-                    blikDetails.classList.add("hidden");
-                    pscDetails.classList.add("hidden");
-                    updateApp(); // Resetuje też podgląd do wartości domyślnych ze stanu
-                } else {
-                    // BŁĄD API: Web3Forms zwrócił błąd (np. zły klucz)
-                    console.error("Błąd Web3Forms:", json);
-                    alert("Problem z formularzem: " + (json.message || "Nieznany błąd API"));
-                }
-            })
-            .catch(err => {
-                // BŁĄD POŁĄCZENIA: Brak internetu, błąd CORS itp.
-                console.error("Błąd sieci:", err);
-                alert("Nie udało się połączyć z serwerem wysyłki.");
-            })
-            .finally(() => {
-                // Zawsze przywracamy przycisk do stanu klikalności
-                btnSubmitSpinner.classList.add("hidden");
-                btnSubmitText.classList.remove("hidden");
-                btnSubmitForm.disabled = false;
-            });
+        // Tworzymy FormData ze standardowych pól tekstowych
+        const formData = new FormData(orderForm);
 
-        }).catch(err => {
-            console.error("Błąd screenshotu: ", err);
-            alert("Wystąpił problem przy generowaniu podglądu projektu.");
-            
+        // Wysyłamy żądanie do Web3Forms
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status === 200) {
+                // Sukces!
+                successModal.classList.remove("hidden");
+                orderForm.reset();
+                sumClientPrice.textContent = "Brak";
+                blikDetails.classList.add("hidden");
+                pscDetails.classList.add("hidden");
+                updateApp();
+            } else {
+                console.error("Błąd API Web3Forms:", json);
+                alert("Wystąpił problem: " + (json.message || "Błąd serwera"));
+            }
+        })
+        .catch(err => {
+            console.error("Błąd sieciowy:", err);
+            alert("Błąd sieci. Sprawdź połączenie z internetem.");
+        })
+        .finally(() => {
             btnSubmitSpinner.classList.add("hidden");
             btnSubmitText.classList.remove("hidden");
             btnSubmitForm.disabled = false;
