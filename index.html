@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapSite by Stronomania - Twój projekt strony</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@700&family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                Snap<span>Site</span>
+            </a>
+            <div class="nav-links">
+                <a href="#kreator">Kreator</a>
+                <a href="#proces">Proces</a>
+                <a href="#opinie">Opinie</a>
+                <a href="#zamowienie" class="btn btn-small btn-glow">Zamów projekt</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Twoja strona internetowa <br><span class="text-gradient">w kilka minut.</span></h1>
+            <p class="hero-subtitle">Wybierz styl, kolory i funkcje. Pobierz gotowy zarys i zamów stronę już od 20 zł. Realizacja nawet w 72 godziny.</p>
+            <div class="hero-buttons">
+                <a href="#kreator" class="btn btn-primary btn-glow">Rozpocznij projekt</a>
+                <a href="#opinie" class="btn btn-secondary">Zobacz przykłady</a>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="30">0</span><span class="stat-plus">+</span>
+                    <p class="stat-label">Wykonanych projektów</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">od</span> <span class="stat-number">20</span><span class="stat-plus"> zł</span>
+                    <p class="stat-label">Niskie ceny bazowe</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">do</span> <span class="stat-number" data-target="72">0</span><span class="stat-plus">h</span>
+                    <p class="stat-label">Czas realizacji</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-kreator" id="kreator">
+        
+        <section class="config-panel">
+            
+            <div class="config-section">
+                <h2 class="section-title"><span class="step-num">1</span> Wybierz typ strony</h2>
+                <div class="type-grid" id="typeGrid">
+                    <div class="type-card active" data-type="prywatna" data-price="25">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="type-info">
+                            <span class="type-name">Prywatna wizytówka</span>
+                            <span class="type-desc">Prosta strona o Tobie</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="portfolio" data-price="30">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <div class="type-info">
+                            <span class="type-name">Portfolio</span>
+                            <span class="type-desc">Dla twórców i programistów</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="firma" data-price="60">
+                        <i class="fa-solid fa-building"></i>
+                        <div class="type-info">
+                            <span class="type-name">Strona firmowa</span>
+                            <span class="type-desc">Zwiększ zaufanie klientów</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="gaming" data-price="35">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <div class="type-info">
+                            <span class="type-name">Projekt Gamingowy</span>
+                            <span class="type-desc">Dla klanów i graczy</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="discord" data-price="30">
+                        <i class="fa-brands fa-discord"></i>
+                        <div class="type-info">
+                            <span class="type-name">Serwer Discord</span>
+                            <span class="type-desc">Regulamin i zaproszenia</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="landing" data-price="45">
+                        <i class="fa-solid fa-rocket"></i>
+                        <div class="type-info">
+                            <span class="type-name">Landing Page</span>
+                            <span class="type-desc">Strona sprzedażowa</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="streamer" data-price="35">
+                        <i class="fa-brands fa-twitch"></i>
+                        <div class="type-info">
+                            <span class="type-name">Dla Streamera</span>
+                            <span class="type-desc">Twój hub społeczności</span>
+                        </div>
+                    </div>
+                    <div class="type-card" data-type="wlasny" data-price="indywidualna">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div class="type-info">
+                            <span class="type-name">Własny pomysł</span>
+                            <span class="type-desc">Zaproponuj coś innego</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h2 class="section-title"><span class="step-num">2</span> Wybierz styl wizualny</h2>
+                <div class="style-grid" id="styleGrid">
+                    <div class="style-card active" data-style="minimalist">
+                        <div class="style-thumb thumb-minimalist"></div>
+                        <span>Minimalistyczny</span>
+                    </div>
+                    <div class="style-card" data-style="premium">
+                        <div class="style-thumb thumb-premium"></div>
+                        <span>Premium</span>
+                    </div>
+                    <div class="style-card" data-style="gaming">
+                        <div class="style-thumb thumb-gaming"></div>
+                        <span>Gamingowy</span>
+                    </div>
+                    <div class="style-card" data-style="futuristic">
+                        <div class="style-thumb thumb-futuristic"></div>
+                        <span>Futurystyczny</span>
+                    </div>
+                    <div class="style-card" data-style="dark">
+                        <div class="style-thumb thumb-dark"></div>
+                        <span>Dark Mode</span>
+                    </div>
+                    <div class="style-card" data-style="neon">
+                        <div class="style-thumb thumb-neon"></div>
+                        <span>Neon</span>
+                    </div>
+                    <div class="style-card" data-style="luxury">
+                        <div class="style-thumb thumb-luxury"></div>
+                        <span>Luxury</span>
+                    </div>
+                    <div class="style-card" data-style="startup">
+                        <div class="style-thumb thumb-startup"></div>
+                        <span>Tech Startup</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h2 class="section-title"><span class="step-num">3</span> Dostosuj szczegóły</h2>
+                <div class="custom-controls">
+                    <div class="control-group">
+                        <label>Kolor główny</label>
+                        <input type="color" id="primaryColor" value="#6d28d9">
+                    </div>
+                    <div class="control-group">
+                        <label>Kolor dodatkowy</label>
+                        <input type="color" id="secondaryColor" value="#06b6d4">
+                    </div>
+                    <div class="control-group">
+                        <label>Czcionka projektu</label>
+                        <select id="fontSelect">
+                            <option value="'Poppins', sans-serif">Poppins (Nowoczesna)</option>
+                            <option value="'Inter', sans-serif">Inter (Klasyczna Startup)</option>
+                            <option value="'Orbitron', sans-serif">Orbitron (Futurystyczna)</option>
+                            <option value="'Roboto Mono', monospace">Roboto Mono (Koder)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Zaokrąglenie rogów</label>
+                        <input type="range" id="borderRadius" min="0" max="30" value="12">
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h2 class="section-title"><span class="step-num">4</span> Wybierz dodatki finansowe</h2>
+                <div class="addons-list">
+                    <label class="addon-item">
+                        <input type="checkbox" class="addon-check" data-addon-price="5" value="Animacje Premium">
+                        <span class="addon-custom-box"></span>
+                        <span class="addon-name">Animacje premium (+5 zł)</span>
+                    </label>
+                    <label class="addon-item">
+                        <input type="checkbox" class="addon-check" data-addon-price="5" value="Galeria zdjęć">
+                        <span class="addon-custom-box"></span>
+                        <span class="addon-name">Zaawansowana galeria (+5 zł)</span>
+                    </label>
+                    <label class="addon-item">
+                        <input type="checkbox" class="addon-check" data-addon-price="5" value="Formularz kontaktowy">
+                        <span class="addon-custom-box"></span>
+                        <span class="addon-name">Formularz kontaktowy (+5 zł)</span>
+                    </label>
+                    <label class="addon-item">
+                        <input type="checkbox" class="addon-check" data-addon-price="10" value="Dodatkowe podstrony">
+                        <span class="addon-custom-box"></span>
+                        <span class="addon-name">Dodatkowe podstrony (+10 zł)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="idea-box glass">
+                <button type="button" class="btn btn-secondary btn-full" id="btnIdeaGenerator"><i class="fa-solid fa-lightbulb"></i> Brak pomysłu? Zainspiruj się!</button>
+                <div class="idea-display hidden" id="ideaDisplay">
+                    <p id="ideaText"></p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="preview-panel">
+            <div class="sticky-preview">
+                <div class="preview-header-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="preview-title-url">podglad-projektu.snapsite.pl</span>
+                </div>
+                
+                <div class="monitor-wrapper" id="liveMonitor">
+                    <div class="mock-nav">
+                        <div class="mock-logo">MOCK.SITE</div>
+                        <div class="mock-links">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="mock-hero">
+                        <h3 class="mock-hero-title">Wirtualny Nagłówek</h3>
+                        <p class="mock-hero-text">Przykładowy podtytuł dynamicznej strony internetowej.</p>
+                        <div class="mock-buttons">
+                            <span class="mock-btn primary">Główny</span>
+                            <span class="mock-btn secondary">Więcej</span>
+                        </div>
+                    </div>
+                    <div class="mock-grid">
+                        <div class="mock-card"></div>
+                        <div class="mock-card"></div>
+                        <div class="mock-card"></div>
+                    </div>
+                    <div class="mock-footer">
+                        <span>© 2026 Mockup Projektu</span>
+                    </div>
+                </div>
+
+                <div class="download-box glass">
+                    <p class="download-info">Zadowolony z układu? Pobierz go i załącz niżej w zamówieniu.</p>
+                    <button id="btnDownloadConfig" class="btn btn-primary btn-glow btn-full">
+                        <i class="fa-solid fa-download"></i> Pobierz plik projektu (.json)
+                    </button>
+                </div>
+
+                <div class="pricing-box glass margin-top">
+                    <h3>Automatyczna Wycena</h3>
+                    <div class="price-display">
+                        <span id="calculatedPrice">25</span> <span class="currency">PLN</span>
+                    </div>
+                    <p class="price-note">*Cena ma charakter orientacyjny. Może ulec zmianie w zależności od specyfikacji tekstowej.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <section class="container section-process" id="proces">
+        <h2 class="main-title text-center">Proces Realizacji Krok po Kroku</h2>
+        <p class="text-center subtitle-order">Przejrzystość to podstawa. Zobacz jak działamy od pomysłu do działającej strony.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fa-solid fa-sliders"></i></div>
+                <div class="timeline-content glass">
+                    <h3>1. Konfiguracja</h3>
+                    <p>Używasz powyższego kreatora, dobierasz układ, kolory, typ strony i dodatki. Kiedy wizja jest gotowa, pobierasz plik projektu.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fa-solid fa-file-arrow-up"></i></div>
+                <div class="timeline-content glass">
+                    <h3>2. Złożenie Zlecenia</h3>
+                    <p>Wypełniasz precyzyjny formularz poniżej, załączasz pobrany wcześniej plik konfiguracyjny i wybierasz dogodną opcję płatności (BLIK / PSC).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <div class="timeline-content glass">
+                    <h3>3. Wycena i Potwierdzenie</h3>
+                    <p>Analizujemy Twoje zgłoszenie. Kontaktujemy się przez e-mail w celu ostatecznego potwierdzenia ceny i instrukcji dotyczących płatności (realizowanej poza platformą).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="timeline-content glass">
+                    <h3>4. Kodowanie (do 72h)</h3>
+                    <p>Po zaksięgowaniu płatności siadamy do pracy. Maksymalnie do 3 dni roboczych otrzymujesz czysty, w pełni responsywny kod gotowy do publikacji.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-order glass" id="zamowienie">
+        <h2 class="main-title text-center">Wycena i Zamówienie</h2>
+        <p class="text-center subtitle-order">Wypełnij dokładnie wszystkie pola. System automatycznie prześle zgłoszenie do realizacji.</p>
+
+        <div class="order-grid">
+<form id="orderForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+                
+    <input type="hidden" name="access_key" value="TUTAJ_WKLEJ_TWÓJ_ACCESS_KEY">
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    <input type="hidden" name="subject" value="Nowe zamówienie projektu SnapSite!">
+    
+    <input type="hidden" id="hiddenScreenshot" name="Screenshot_Podgladu">
+
+    <div class="form-grid-inputs">
+        <div class="form-group">
+            <label for="clientName">Imię / Nick <span class="req">*</span></label>
+            <input type="text" id="clientName" name="Imie_Klienta" required placeholder="np. Jan">
+        </div>
+        <div class="form-group">
+            <label for="clientEmail">Adres Email <span class="req">*</span></label>
+            <input type="email" id="clientEmail" name="Email_Klienta" required placeholder="np. kontakt@twojadomena.pl">
+        </div>
+        <div class="form-group">
+            <label for="projectName">Nazwa Projektu <span class="req">*</span></label>
+            <input type="text" id="projectName" name="Nazwa_Projektu" required placeholder="np. Moja Firma S.A.">
+        </div>
+        <div class="form-group">
+            <label for="customPrice">Twoja proponowana cena (min. 5 zł) <span class="req">*</span></label>
+            <input type="number" id="customPrice" name="Propozycja_Ceny" required min="5" placeholder="Wpisz kwotę PLN">
+        </div>
+    </div>
+
+    <div class="form-group margin-top">
+        <label for="projectDesc">Opis projektu / Funkcjonalności <span class="req">*</span></label>
+        <textarea id="projectDesc" name="Opis_Projektu" required rows="3" placeholder="Opisz krótko, czym zajmuje się strona i jakie ma mieć funkcje..."></textarea>
+    </div>
+
+    <div class="form-group margin-top">
+        <label for="projectTexts">Wstępne teksty na stronę <span class="req">*</span></label>
+        <textarea id="projectTexts" name="Teksty_Strony" required rows="3" placeholder="Wklej nagłówki, opisy lub teksty, które mają się tam znaleźć..."></textarea>
+    </div>
+
+    <div class="form-grid-inputs margin-top">
+        <div class="form-group">
+            <label for="socialLinks">Social Media (Linki) <span class="req">*</span></label>
+            <input type="text" id="socialLinks" name="Social_Media" required placeholder="np. link do fb, discorda, yt">
+        </div>
+        <div class="form-group">
+            <label for="inspirations">Inspiracje / Przykłady stron <span class="req">*</span></label>
+            <input type="text" id="inspirations" name="Inspiracje" required placeholder="np. wyglądem ma przypominać stronę x...">
+        </div>
+    </div>
+
+    <div class="form-group margin-top">
+        <label for="extraDemands">Dodatkowe wymagania techniczne <span class="req">*</span></label>
+        <textarea id="extraDemands" name="Wymagania_Dodatkowe" required rows="2" placeholder="np. jasny motyw preferowany, mniejsze przyciski..."></textarea>
+    </div>
+
+    <div class="form-group upload-group margin-top">
+        <label for="configFile"><i class="fa-solid fa-upload"></i> Prześlij pobrany plik konfiguracji (.json) <span class="req">*</span></label>
+        <p class="upload-hint">Pobierz plik klikając niebieski przycisk pod monitorem poglądowym i wgraj go tutaj.</p>
+        <input type="file" id="configFile" name="Plik_Projektu" required accept=".json,.txt">
+    </div>
+
+                <div class="payment-section margin-top-lg">
+                    <h3>Wybierz metodę płatności (poza platformą)</h3>
+                    <div class="payment-options">
+                        <label class="payment-radio">
+                            <input type="radio" name="Metoda_Platnosci" value="BLIK" id="payBlik" required>
+                            <span class="radio-custom"></span>
+                            <div class="pay-info">
+                                <strong>BLIK</strong>
+                                <span>Szybka płatność na numer telefonu</span>
+                            </div>
+                        </label>
+                        <label class="payment-radio">
+                            <input type="radio" name="Metoda_Platnosci" value="PSC" id="payPsc">
+                            <span class="radio-custom"></span>
+                            <div class="pay-info">
+                                <strong>Paysafecard (PSC)</strong>
+                                <span>Podanie pinu vouchera</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="blikDetails" class="payment-details hidden">
+                        <div class="form-group">
+                            <label for="blikContact">Podaj swój kontakt dodatkowy na rozliczenie blikiem <span class="req">*</span></label>
+                            <input type="text" id="blikContact" name="Kontakt_BLIK" placeholder="np. Nr telefonu lub dokładny nick z discorda">
+                        </div>
+                    </div>
+
+                    <div id="pscDetails" class="payment-details hidden">
+                        <div class="form-group psc-alert">
+                            <label for="pscCode">Podaj kod PSC <span class="req">*</span></label>
+                            <input type="text" id="pscCode" name="Kod_PSC" placeholder="XXXX-XXXX-XXXX-XXXX">
+                            <small class="text-red"><i class="fa-solid fa-triangle-exclamation"></i> UWAGA: Jeśli kod jest niedziałający, zamówienie nie będzie realizowane.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-glow btn-full margin-top-lg" id="btnSubmitForm">
+                    <span id="btnSubmitText"><i class="fa-solid fa-paper-plane"></i> Złóż Zamówienie</span>
+                    <span id="btnSubmitSpinner" class="hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Wysyłanie...</span>
+                </button>
+            </form>
+
+            <div class="summary-box glass">
+                <h3>Skrócone Podsumowanie</h3>
+                <hr class="summary-divider">
+                <ul class="summary-list">
+                    <li><strong>Typ strony:</strong> <span id="sumType">Prywatna wizytówka</span></li>
+                    <li><strong>Styl wizualny:</strong> <span id="sumStyle">Minimalistyczny</span></li>
+                    <li><strong>Kolor główny:</strong> <span id="sumColorPrimary">#6d28d9</span></li>
+                    <li class="summary-highlight"><strong>Baza wyceny:</strong> <span id="sumAutoPrice">25 PLN</span></li>
+                    <li class="summary-highlight-client"><strong>Twoja propozycja:</strong> <span id="sumClientPrice">Brak</span></li>
+                </ul>
+                <div class="summary-disclaimer">
+                    <i class="fa-solid fa-circle-info"></i> Pamiętaj, aby pobrać i załączyć plik `.json` w formularzu. Znajduje się w nim pełna struktura Twoich ustawień kreatora, która będzie podstawą do rozpoczęcia kodowania projektu.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-opinions" id="opinie">
+        <h2 class="main-title text-center">Zaufali Nam</h2>
+        <div class="slider-wrapper glass">
+            <div class="slider-container" id="opinionSlider">
+                <div class="opinion-slide active">
+                    <div class="opinion-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="opinion-text">"Zamawiałem prostą stronę pod portfolio. Kontakt z twórcą bardzo dobry, faktycznie zmieścił się w 3 dniach. Kod jest na tyle czytelny, że sam mogłem potem podmienić sobie teksty i zdjęcia. Zdecydowanie polecam."</p>
+                    <h4 class="opinion-author">Michał M.</h4>
+                </div>
+                <div class="opinion-slide">
+                    <div class="opinion-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p class="opinion-text">"Kreator ułatwia sprawę, bo z góry widziałem jak będzie wyglądać paleta. Płatność blikiem bez żadnych problemów, działa błyskawicznie. Jedyny minus, że za formularz musiałem symbolicznie dopłacić, ale i tak wyszło mega tanio w porównaniu do agencji."</p>
+                    <h4 class="opinion-author">Dawid 'Devo'</h4>
+                </div>
+                <div class="opinion-slide">
+                    <div class="opinion-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="opinion-text">"Landing page dla mojego serwera Minecraft zrobiony dokładnie w stylu 'neon'. Wysłany plik JSON z kreatora niesamowicie przyspieszył dogadywanie detali. Za 45 złotych to prawie jak za darmo, na sto procent wrócę z kolejnym zleceniem."</p>
+                    <h4 class="opinion-author">Kacper (Właściciel Serwera)</h4>
+                </div>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay hidden" id="successModal">
+        <div class="modal-content glass">
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Projekt wysłany poprawnie!</h2>
+            <p>Dziękujemy za złożenie zamówienia. Oczekuj na odpowiedź mailową z ostateczną wyceną i szczegółami dotyczącymi płatności. Do usłyszenia!</p>
+            <button class="btn btn-primary margin-top" id="btnCloseModal">Zamknij okno</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <img src="ChatGPT Image 22 cze 2026, 19_28_48.png" alt="Stronomania Logo" class="footer-logo">
+        <p>© 2026 SnapSite. Napędzane przez <strong>SnapSite Team</strong>. Realizujemy projekty z pasją.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
