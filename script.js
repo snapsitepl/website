@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showSlide(next);
     }, 6000);
 
-    // --- WYSYŁKA FORMULARZA Z SCREENSHOTEM ---
+    // --- WYSYŁKA FORMULARZA Z REALNYM API WEB3FORMS ---
     orderForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -276,28 +276,56 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSubmitSpinner.classList.remove("hidden");
         btnSubmitForm.disabled = true;
 
+        // 1. Najpierw robimy screenshot podglądu live
         html2canvas(liveMonitor, {
             backgroundColor: "#0f1026",
             scale: 1,
             logging: false
         }).then(canvas => {
+            // Wrzucamy obrazek base64 do ukrytego inputa
             hiddenScreenshot.value = canvas.toDataURL("image/png");
 
-            // Symulacja wysyłki - orderForm.submit() aby przekazać dane i plik w realnym scenariuszu.
-            setTimeout(() => {
-                successModal.classList.remove("hidden");
+            // 2. Pobieramy wszystkie dane z formularza (w tym nasz wygenerowany przed chwilą screenshot)
+            const formData = new FormData(orderForm);
+
+            // 3. Wysyłamy realne zapytanie do Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                
+                if (response.status === 200) {
+                    // SUKCES: Czyścimy formularz i pokazujemy okienko
+                    successModal.classList.remove("hidden");
+                    orderForm.reset();
+                    sumClientPrice.textContent = "Brak";
+                    blikDetails.classList.add("hidden");
+                    pscDetails.classList.add("hidden");
+                    updateApp(); // Resetuje też podgląd do wartości domyślnych ze stanu
+                } else {
+                    // BŁĄD API: Web3Forms zwrócił błąd (np. zły klucz)
+                    console.error("Błąd Web3Forms:", json);
+                    alert("Problem z formularzem: " + (json.message || "Nieznany błąd API"));
+                }
+            })
+            .catch(err => {
+                // BŁĄD POŁĄCZENIA: Brak internetu, błąd CORS itp.
+                console.error("Błąd sieci:", err);
+                alert("Nie udało się połączyć z serwerem wysyłki.");
+            })
+            .finally(() => {
+                // Zawsze przywracamy przycisk do stanu klikalności
                 btnSubmitSpinner.classList.add("hidden");
                 btnSubmitText.classList.remove("hidden");
                 btnSubmitForm.disabled = false;
-                orderForm.reset();
-                sumClientPrice.textContent = "Brak";
-                blikDetails.classList.add("hidden");
-                pscDetails.classList.add("hidden");
-                updateApp();
-            }, 1500);
+            });
+
         }).catch(err => {
             console.error("Błąd screenshotu: ", err);
-            successModal.classList.remove("hidden");
+            alert("Wystąpił problem przy generowaniu podglądu projektu.");
+            
             btnSubmitSpinner.classList.add("hidden");
             btnSubmitText.classList.remove("hidden");
             btnSubmitForm.disabled = false;
