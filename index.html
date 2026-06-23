@@ -316,64 +316,64 @@
         <p class="text-center subtitle-order">Wypełnij dokładnie wszystkie pola. System automatycznie prześle zgłoszenie do realizacji.</p>
 
         <div class="order-grid">
-<form id="orderForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+            <form id="orderForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
                 
-    <input type="hidden" name="access_key" value="bb19aeb9-c216-45d1-a742-03d07554a7f7">
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-    <input type="hidden" name="subject" value="Nowe zamówienie projektu SnapSite!">
-    
-    <input type="hidden" id="hiddenScreenshot" name="Screenshot_Podgladu">
+                <input type="hidden" name="access_key" value="bb19aeb9-c216-45d1-a742-03d07554a7f7">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <input type="hidden" name="subject" value="Nowe zamówienie projektu SnapSite!">
+                
+                <input type="hidden" id="hiddenScreenshot" name="Screenshot_Podgladu">
 
-    <div class="form-grid-inputs">
-        <div class="form-group">
-            <label for="clientName">Imię / Nick <span class="req">*</span></label>
-            <input type="text" id="clientName" name="Imie_Klienta" required placeholder="np. Jan">
-        </div>
-        <div class="form-group">
-            <label for="clientEmail">Adres Email <span class="req">*</span></label>
-            <input type="email" id="clientEmail" name="Email_Klienta" required placeholder="np. kontakt@twojadomena.pl">
-        </div>
-        <div class="form-group">
-            <label for="projectName">Nazwa Projektu <span class="req">*</span></label>
-            <input type="text" id="projectName" name="Nazwa_Projektu" required placeholder="np. Moja Firma S.A.">
-        </div>
-        <div class="form-group">
-            <label for="customPrice">Twoja proponowana cena (min. 5 zł) <span class="req">*</span></label>
-            <input type="number" id="customPrice" name="Propozycja_Ceny" required min="5" placeholder="Wpisz kwotę PLN">
-        </div>
-    </div>
+                <div class="form-grid-inputs">
+                    <div class="form-group">
+                        <label for="clientName">Imię / Nick <span class="req">*</span></label>
+                        <input type="text" id="clientName" name="Imie_Klienta" required placeholder="np. Jan">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientEmail">Adres Email <span class="req">*</span></label>
+                        <input type="email" id="clientEmail" name="Email_Klienta" required placeholder="np. kontakt@twojadomena.pl">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">Nazwa Projektu <span class="req">*</span></label>
+                        <input type="text" id="projectName" name="Nazwa_Projektu" required placeholder="np. Moja Firma S.A.">
+                    </div>
+                    <div class="form-group">
+                        <label for="customPrice">Twoja proponowana cena (min. 5 zł) <span class="req">*</span></label>
+                        <input type="number" id="customPrice" name="Propozycja_Ceny" required min="5" placeholder="Wpisz kwotę PLN">
+                    </div>
+                </div>
 
-    <div class="form-group margin-top">
-        <label for="projectDesc">Opis projektu / Funkcjonalności <span class="req">*</span></label>
-        <textarea id="projectDesc" name="Opis_Projektu" required rows="3" placeholder="Opisz krótko, czym zajmuje się strona i jakie ma mieć funkcje..."></textarea>
-    </div>
+                <div class="form-group margin-top">
+                    <label for="projectDesc">Opis projektu / Funkcjonalności <span class="req">*</span></label>
+                    <textarea id="projectDesc" name="Opis_Projektu" required rows="3" placeholder="Opisz krótko, czym zajmuje się strona i jakie ma mieć funkcje..."></textarea>
+                </div>
 
-    <div class="form-group margin-top">
-        <label for="projectTexts">Wstępne teksty na stronę <span class="req">*</span></label>
-        <textarea id="projectTexts" name="Teksty_Strony" required rows="3" placeholder="Wklej nagłówki, opisy lub teksty, które mają się tam znaleźć..."></textarea>
-    </div>
+                <div class="form-group margin-top">
+                    <label for="projectTexts">Wstępne teksty na stronę <span class="req">*</span></label>
+                    <textarea id="projectTexts" name="Teksty_Strony" required rows="3" placeholder="Wklej nagłówki, opisy lub teksty, które mają się tam znaleźć..."></textarea>
+                </div>
 
-    <div class="form-grid-inputs margin-top">
-        <div class="form-group">
-            <label for="socialLinks">Social Media (Linki) <span class="req">*</span></label>
-            <input type="text" id="socialLinks" name="Social_Media" required placeholder="np. link do fb, discorda, yt">
-        </div>
-        <div class="form-group">
-            <label for="inspirations">Inspiracje / Przykłady stron <span class="req">*</span></label>
-            <input type="text" id="inspirations" name="Inspiracje" required placeholder="np. wyglądem ma przypominać stronę x...">
-        </div>
-    </div>
+                <div class="form-grid-inputs margin-top">
+                    <div class="form-group">
+                        <label for="socialLinks">Social Media (Linki) <span class="req">*</span></label>
+                        <input type="text" id="socialLinks" name="Social_Media" required placeholder="np. link do fb, discorda, yt">
+                    </div>
+                    <div class="form-group">
+                        <label for="inspirations">Inspiracje / Przykłady stron <span class="req">*</span></label>
+                        <input type="text" id="inspirations" name="Inspiracje" required placeholder="np. wyglądem ma przypominać stronę x...">
+                    </div>
+                </div>
 
-    <div class="form-group margin-top">
-        <label for="extraDemands">Dodatkowe wymagania techniczne <span class="req">*</span></label>
-        <textarea id="extraDemands" name="Wymagania_Dodatkowe" required rows="2" placeholder="np. jasny motyw preferowany, mniejsze przyciski..."></textarea>
-    </div>
+                <div class="form-group margin-top">
+                    <label for="extraDemands">Dodatkowe wymagania techniczne <span class="req">*</span></label>
+                    <textarea id="extraDemands" name="Wymagania_Dodatkowe" required rows="2" placeholder="np. jasny motyw preferowany, mniejsze przyciski..."></textarea>
+                </div>
 
-    <div class="form-group upload-group margin-top">
-        <label for="configFile"><i class="fa-solid fa-upload"></i> Prześlij pobrany plik konfiguracji (.json) <span class="req">*</span></label>
-        <p class="upload-hint">Pobierz plik klikając niebieski przycisk pod monitorem poglądowym i wgraj go tutaj.</p>
-        <input type="file" id="configFile" name="Plik_Projektu" required accept=".json,.txt">
-    </div>
+                <div class="form-group upload-group margin-top">
+                    <label for="configFile"><i class="fa-solid fa-upload"></i> Prześlij pobrany plik konfiguracji (.json) <span class="req">*</span></label>
+                    <p class="upload-hint">Pobierz plik klikając niebieski przycisk pod monitorem poglądowym i wgraj go tutaj.</p>
+                    <input type="file" id="configFile" name="Plik_Projektu" required accept=".json,.txt">
+                </div>
 
                 <div class="payment-section margin-top-lg">
                     <h3>Wybierz metodę płatności (poza platformą)</h3>
@@ -473,7 +473,7 @@
     </div>
 
     <footer class="main-footer">
-        <img src="ChatGPT Image 22 cze 2026, 19_28_48.png" alt="Stronomania Logo" class="footer-logo">
+        <img src="logo.png" alt="Stronomania Logo" class="footer-logo">
         <p>© 2026 SnapSite. Napędzane przez <strong>SnapSite Team</strong>. Realizujemy projekty z pasją.</p>
     </footer>
 
